@@ -85,17 +85,11 @@ function s:setupWrapping()
 endfunction
 
 if has("autocmd")
-  " In Makefiles, use real tabs, not tabs expanded to spaces
-  au FileType make set noexpandtab
-
   " Make sure all markdown files have the correct filetype set and setup wrapping
   au BufRead,BufNewFile *.{md,markdown,mdown,mkd,mkdn,txt} setf markdown | call s:setupWrapping()
 
   " Treat JSON files like JavaScript
   au BufNewFile,BufRead *.json set ft=javascript
-
-  " make Python follow PEP8 ( http://www.python.org/dev/peps/pep-0008/ )
-  au FileType python set softtabstop=4 tabstop=4 shiftwidth=4 textwidth=79
 
   " Remember last location in file, but not for commit messages.
   " see :help last-position-jump
@@ -106,20 +100,15 @@ if has("autocmd")
   au BufNewFile,BufRead *.{md,markdown,html,xml} sy match Comment /\%^---\_.\{-}---$/
 endif
 
-" don't use Ex mode, use Q for formatting
-map Q gq
-
 " clear the search buffer when hitting return
 :nnoremap <CR> :nohlsearch<cr>
 
 let mapleader=","
 
-" paste lines from unnamed register and fix indentation
-nmap <leader>P PV`]=
-
 " CtrlP mappings
 autocmd VimEnter * if exists(":CtrlP") | exe "unmap <c-p>" |
 map <Leader>f :CtrlP<cr>
+map <leader>ga :CtrlP app/apis<cr>
 map <leader>gv :CtrlP app/views<cr>
 map <leader>gc :CtrlP app/controllers<cr>
 map <leader>gm :CtrlP app/models<cr>
@@ -136,16 +125,8 @@ nnoremap <Leader>fu :CtrlPFunky<Cr>
 " narrow the list down with a word under cursor
 nnoremap <Leader>fU :execute 'CtrlPFunky ' . expand('<cword>')<Cr>
 
-" http://vimcasts.org/e/14
-cnoremap %% <C-R>=expand('%:h').'/'<cr>
-
 " ignore Rubinius, Sass cache files
 set wildignore+=tmp/**,*.rbc,.rbx,*.scssc,*.sassc,app/assets/images/**,public/**
-
-" nnoremap <leader><leader> <c-^>
-
-" find merge conflict markers
-nmap <silent> <leader>cf <ESC>/\v^[<=>]{7}( .*\|$)<CR>
 
 command! KillWhitespace :normal :%s/ *$//g<cr><c-o><cr>
 
@@ -171,6 +152,7 @@ set laststatus=2
 set foldnestmax=10      "deepest fold is 10 levels
 set nofoldenable        "dont fold by default
 set foldlevel=1         "this is just what i use
+
 " remember folding
 autocmd BufWrite * mkview
 autocmd BufRead * silent loadview
@@ -189,7 +171,6 @@ let g:quickrun_config={'*': {'split': ''}}
 set splitbelow
 set splitright
 
-" neocomplcache
 let g:neocomplcache_enable_at_startup = 1
 let g:neocomplcache_force_overwrite_completefunc = 1
 
