@@ -9,7 +9,7 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 " Bundles used by me
 Bundle 'Lokaltog/vim-easymotion'
-Bundle 'Lokaltog/powerline'
+Bundle 'bling/vim-airline'
 Bundle 'tpope/vim-fugitive'
 Bundle 'w0ng/vim-hybrid'
 Bundle 'kien/ctrlp.vim'
@@ -145,9 +145,12 @@ map <Right> :echo "no!"<cr>
 map <Up>    :echo "no!"<cr>
 map <Down>  :echo "no!"<cr>
 
-" vim powerline
-let g:Powerline_symbols = 'fancy'
+" vim airline
 set laststatus=2
+" let g:airline_left_sep='›'
+" let g:airline_right_sep='‹'
+let g:airline_left_sep=''
+let g:airline_right_sep=''
 
 " vim folding
 " folding settings
