@@ -19,6 +19,7 @@ Bundle 'Yggdroot/indentLine'
 Bundle 'scrooloose/nerdtree'
 Bundle 'Shougo/neocomplcache.vim'
 Bundle 'Shougo/neosnippet.vim'
+Bundle 'Shougo/unite.vim'
 Bundle 'markee/vim-snippets'
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'tpope/vim-surround'
@@ -109,7 +110,7 @@ let mapleader=","
 
 " CtrlP mappings
 autocmd VimEnter * if exists(":CtrlP") | exe "unmap <c-p>" |
-map <Leader>f :CtrlP<cr>
+map <Leader>ff :CtrlP<cr>
 map <leader>ga :CtrlP app/apis<cr>
 map <leader>gv :CtrlP app/views<cr>
 map <leader>gc :CtrlP app/controllers<cr>
@@ -180,13 +181,14 @@ let g:neocomplcache_force_overwrite_completefunc = 1
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
+autocmd FileType ruby,eruby setlocal omnifunc=rubycomplete#Complete
 
 " Neosnippet
 " Plugin key-mappings.
 let g:neosnippet#enable_snipmate_compatibility = 1
+let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets'
+
 imap <C-k>     <Plug>(neosnippet_expand_or_jump)
 smap <C-k>     <Plug>(neosnippet_expand_or_jump)
 xmap <C-k>     <Plug>(neosnippet_expand_target)
