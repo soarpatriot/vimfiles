@@ -10,6 +10,7 @@ Bundle 'gmarik/vundle'
 " Bundles used by me
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'Lokaltog/powerline'
+Bundle 'tpope/vim-fugitive'
 Bundle 'w0ng/vim-hybrid'
 Bundle 'kien/ctrlp.vim'
 Bundle 'tacahiroy/ctrlp-funky'
@@ -29,6 +30,7 @@ Bundle 'mileszs/ack.vim'
 Bundle 'tpope/vim-endwise'
 Bundle 'tpope/vim-surround'
 Bundle 'scrooloose/syntastic'
+Bundle 'terryma/vim-multiple-cursors'
 
 " Settings 
 set nocompatible
