@@ -1,46 +1,47 @@
 set nocompatible              " be iMproved
 filetype off                  " required!
 
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
 " let Vundle manage Vundle
 " required! 
-Bundle 'gmarik/vundle'
-" Bundles used by me
-Bundle 'Lokaltog/vim-easymotion'
-Bundle 'bling/vim-airline'
-Bundle 'tpope/vim-fugitive'
-Bundle 'w0ng/vim-hybrid'
-Bundle 'kien/ctrlp.vim'
-Bundle 'slim-template/vim-slim'
-Bundle 'tacahiroy/ctrlp-funky'
-Bundle 'tpope/vim-commentary'
-Bundle 'Yggdroot/indentLine'
-Bundle 'scrooloose/nerdtree'
-Bundle 'Shougo/neocomplcache.vim'
-Bundle 'Shougo/neosnippet.vim'
-Bundle 'Shougo/unite.vim'
-Bundle 'markee/vim-snippets'
-Bundle 'vim-ruby/vim-ruby'
-Bundle 'tpope/vim-surround'
-Bundle 'godlygeek/tabular'
-Bundle 'thinca/vim-quickrun'
-Bundle 'pangloss/vim-javascript'
-Bundle 'Townk/vim-autoclose'
-Bundle 'mileszs/ack.vim'
-Bundle 'tpope/vim-endwise'
-Bundle 'tpope/vim-surround'
-Bundle 'scrooloose/syntastic'
-Bundle 'terryma/vim-multiple-cursors'
+Plugin 'gmarik/vundle'
+" Plugins used by me
+Plugin 'Lokaltog/vim-easymotion'
+Plugin 'bling/vim-airline'
+Plugin 'tpope/vim-fugitive'
+Plugin 'w0ng/vim-hybrid'
+Plugin 'kien/ctrlp.vim'
+Plugin 'slim-template/vim-slim'
+Plugin 'tacahiroy/ctrlp-funky'
+Plugin 'tpope/vim-commentary'
+Plugin 'Yggdroot/indentLine'
+Plugin 'scrooloose/nerdtree'
+Plugin 'Shougo/neocomplcache.vim'
+Plugin 'Shougo/neosnippet.vim'
+Plugin 'Shougo/unite.vim'
+Plugin 'markee/vim-snippets'
+Plugin 'vim-ruby/vim-ruby'
+Plugin 'godlygeek/tabular'
+Plugin 'thinca/vim-quickrun'
+Plugin 'pangloss/vim-javascript'
+Plugin 'Townk/vim-autoclose'
+Plugin 'mileszs/ack.vim'
+Plugin 'tpope/vim-endwise'
+Plugin 'tpope/vim-surround'
+Plugin 'scrooloose/syntastic'
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'rodjek/vim-puppet'
+
+call vundle#end()
+filetype plugin indent on
 
 " Settings 
 set nocompatible
 set encoding=utf-8
 set term=screen-256color
-set timeoutlen=1000 ttimeoutlen=0
-
-filetype plugin indent on
+set timeoutlen=250
 
 runtime macros/matchit.vim  " enables % to cycle through `if/else/endif`
 
@@ -161,8 +162,8 @@ set nofoldenable        "dont fold by default
 set foldlevel=1         "this is just what i use
 
 " remember folding
-autocmd BufWrite * mkview
-autocmd BufRead * silent loadview
+" autocmd BufWrite * mkview
+" autocmd BufRead * silent loadview
 
 " Act
 let g:ackprg="~/.vim/bin/ack -H --nocolor --nogroup --column"
