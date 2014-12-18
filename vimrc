@@ -33,6 +33,7 @@ Plugin 'tpope/vim-surround'
 Plugin 'scrooloose/syntastic'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'rodjek/vim-puppet'
+Plugin 'LeonB/vim-nginx'
 
 call vundle#end()
 filetype plugin indent on
