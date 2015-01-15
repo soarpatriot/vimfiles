@@ -35,6 +35,8 @@ Plugin 'terryma/vim-multiple-cursors'
 Plugin 'rodjek/vim-puppet'
 Plugin 'LeonB/vim-nginx'
 
+Bundle 'git://github.com/digitaltoad/vim-jade.git'
+Bundle 'git://github.com/wavded/vim-stylus.git'
 call vundle#end()
 filetype plugin indent on
 
@@ -43,6 +45,8 @@ set nocompatible
 set encoding=utf-8
 set term=screen-256color
 set timeoutlen=250
+set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
+set list
 
 runtime macros/matchit.vim  " enables % to cycle through `if/else/endif`
 
@@ -96,6 +100,11 @@ if has("autocmd")
 
   " Treat JSON files like JavaScript
   au BufNewFile,BufRead *.json set ft=javascript
+  
+  " set stylus filetype
+  autocmd BufNewFile,BufRead *.styl set filetype=stylus
+  " set jade filetype
+  autocmd BufNewFile,BufRead *.jade set filetype=jade
 
   " Remember last location in file, but not for commit messages.
   " see :help last-position-jump
