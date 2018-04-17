@@ -5,11 +5,12 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 " let Vundle manage Vundle
-" required! 
+" required!
 Plugin 'gmarik/vundle'
 " Plugins used by me
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'bling/vim-airline'
+Plugin 'mhinz/vim-grepper'
 Plugin 'tpope/vim-fugitive'
 Plugin 'w0ng/vim-hybrid'
 Plugin 'kien/ctrlp.vim'
@@ -21,6 +22,7 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'Shougo/neocomplcache.vim'
 Plugin 'Shougo/neosnippet.vim'
 Plugin 'Shougo/unite.vim'
+Plugin 'Shougo/neosnippet-snippets'
 Plugin 'markee/vim-snippets'
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'godlygeek/tabular'
@@ -35,12 +37,12 @@ Plugin 'terryma/vim-multiple-cursors'
 Plugin 'rodjek/vim-puppet'
 Plugin 'LeonB/vim-nginx'
 
-Bundle 'git://github.com/digitaltoad/vim-jade.git'
-Bundle 'git://github.com/wavded/vim-stylus.git'
+" Bundle 'git://github.com/digitaltoad/vim-jade.git'
+" Bundle 'git://github.com/wavded/vim-stylus.git'
 call vundle#end()
 filetype plugin indent on
 
-" Settings 
+" Settings
 set nocompatible
 set encoding=utf-8
 set term=screen-256color
@@ -100,7 +102,7 @@ if has("autocmd")
 
   " Treat JSON files like JavaScript
   au BufNewFile,BufRead *.json set ft=javascript
-  
+
   " set stylus filetype
   autocmd BufNewFile,BufRead *.styl set filetype=stylus
   " set jade filetype
@@ -123,6 +125,7 @@ let mapleader=","
 " CtrlP mappings
 autocmd VimEnter * if exists(":CtrlP") | exe "unmap <c-p>" |
 map <Leader>ff :CtrlP<cr>
+map <Leader>fr :CtrlPMRU<cr>
 map <leader>ga :CtrlP app/apis<cr>
 map <leader>gv :CtrlP app/views<cr>
 map <leader>gc :CtrlP app/controllers<cr>
@@ -130,15 +133,30 @@ map <leader>gm :CtrlP app/models<cr>
 map <leader>gh :CtrlP app/helpers<cr>
 map <leader>gf :CtrlP config<cr>
 map <leader>gl :CtrlP lib<cr>
-map <leader>gs :CtrlP spec<cr>
-map <leader>gg :topleft 25 :split Gemfile<cr>
+" map <leader>gs :CtrlP spec<cr>
+" map <leader>gg :topleft 25 :split Gemfile<cr>
 map <leader>gd :topleft 25 :split config/deploy.rb<cr>
-map <leader>gr :topleft 25 :split config/routes.rb<cr>
+" map <leader>gr :topleft 25 :split config/routes.rb<cr>
 
 let g:ctrlp_extensions = ['funky']
 nnoremap <Leader>fu :CtrlPFunky<Cr>
 " narrow the list down with a word under cursor
 nnoremap <Leader>fU :execute 'CtrlPFunky ' . expand('<cword>')<Cr>
+
+" vim-grepper settings
+nnoremap <leader>gg :Grepper<cr>
+nnoremap <leader>ag :Grepper -tool pt -query <C-R><C-W><cr>
+nnoremap <leader>gr :Grepper -tool git -query <C-R><C-W><cr>
+nmap gs  <plug>(GrepperOperator)
+xmap gs  <plug>(GrepperOperator)
+let g:grepper = {
+    \ 'next_tool': '<leader>gg',
+    \ 'tools': ['pt', 'git', 'ag', 'ack', 'grep', 'findstr', 'rg'],
+    \ 'pt': {
+    \   'grepprg':    'pt --nocolor --nogroup',
+    \   'grepformat': '%f:%l:%m',
+    \   'escape':     '\+*^$()[]',
+    \ }}
 
 " ignore Rubinius, Sass cache files
 set wildignore+=tmp/**,*.rbc,.rbx,*.scssc,*.sassc,app/assets/images/**,public/**
@@ -177,7 +195,7 @@ set foldlevel=1         "this is just what i use
 
 " Act
 let g:ackprg="~/.vim/bin/ack -H --nocolor --nogroup --column"
-map <leader>s :Ack 
+map <leader>s :Ack
 
 " NERDTree
 map <leader>t :NERDTree<cr>
